@@ -1,3 +1,11 @@
+/* ===== ตัวแปร CSS: สืบทอดโลกไปยังทั้งเว็บไซต์ ===== */
+/* ประกาศตัวแปรสีหลัก, ขนาด และเงา ที่ใช้ร่วมกันทั้งเพจ
+   - --bg: พื้นหลังหลักของเพจ (สีกรม)
+   - --surface: สีพื้นผิวของ card/section (สีขาว)
+   - --accent: สีเน้น primary ใช้ปุ่มและลิงก์ active (สีเขียวเข้ม)
+   - --danger: สีแดงสำหรับการลบ/ปืดเตือน
+   - --shadow: เงาใช้ common ให้ hierarchy
+*/
 :root {
 	--bg: #f5f1ea;
 	--surface: #fffdf8;
@@ -12,6 +20,9 @@
 	--shadow: 0 10px 30px rgba(22, 18, 10, 0.08);
 }
 
+/* ===== Global Styles: พื้นฐานของทั้งเว็บไซต์ ===== */
+/* ระบุให้ box-sizing บนทั้ง element เป็น border-box
+   ทำให้ padding และ border นับเข้าในwidth/height */
 * {
 	box-sizing: border-box;
 }
@@ -22,6 +33,12 @@ body {
 	padding: 0;
 }
 
+/* สไตล์ส่วนลำตัว (Body):
+   - min-height: 100vh ให้ footer สุดล่าง ถ้าเนื้อหาน้อย
+   - font-family: ใช้ ไทยแล้ว fallback ทั่วไป
+   - background: gradient ซับซ้อน 3 layers ให้ออกมาชาญฉลาด
+   - line-height: 1.6 ทำให้ข้อความเข้าใจง่ายขึ้น
+*/
 body {
 	min-height: 100vh;
 	font-family: "Prompt", "Sarabun", "Noto Sans Thai", sans-serif;
@@ -49,15 +66,19 @@ body {
 	top: 0.8rem;
 }
 
+/* ===== ลิงก์และ Layout ===== */
+/* ลิงก์สืบทอดสีจากผู้ปกครอง */
 a {
 	color: inherit;
 }
 
+/* Container: ความกว้างสูงสุด 1080px แต่ต่างตัวอักษรถ้าหน้าจอเล็ก */
 .container {
 	width: min(1080px, 92vw);
 	margin: 0 auto;
 }
 
+/* ===== ส่วนหัว (Header): Sticky + Blur Effect ===== */
 .site-header {
 	position: sticky;
 	top: 0;
@@ -67,6 +88,7 @@ a {
 	border-bottom: 1px solid var(--line);
 }
 
+/* Flexbox layout ใน header: โลโก้ทางซ้าย, เมนูไปทางขวา */
 .header-inner {
 	display: flex;
 	align-items: center;
@@ -75,12 +97,14 @@ a {
 	padding: 0.9rem 0;
 }
 
+/* โลโก้ส่วนตัว */
 .brand {
 	font-weight: 700;
 	letter-spacing: 0.2px;
 	text-decoration: none;
 }
 
+/* เมนูนำทาง: ใช้ Flexbox เรียงตัวแนวนอน */
 .site-nav ul {
 	margin: 0;
 	padding: 0;
@@ -89,6 +113,7 @@ a {
 	gap: 0.35rem;
 }
 
+/* ลิงก์เมนู: ตัวหนังสือมน + สัดส่วน */
 .site-nav a {
 	display: inline-block;
 	text-decoration: none;
@@ -98,6 +123,7 @@ a {
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* สถานะ hover/focus/active ของลิงก์เมนู */
 .site-nav a:hover,
 .site-nav a:focus-visible,
 .site-nav a.active {
@@ -105,12 +131,15 @@ a {
 	background-color: var(--surface-strong);
 }
 
+/* ===== เนื้อหาหลัก (Main Content) ===== */
+/* ใช้ Grid เพื่อให้ section แต่ละชิ้นอยู่บนบรรทัดต่าง ๆ */
 .page-content {
 	padding: 2.2rem 0 2.8rem;
 	display: grid;
 	gap: 1.25rem;
 }
 
+/* สไตล์ร่วมของ section หลัก ทั้งหมด */
 .hero,
 .project-header,
 .cv-header,
@@ -122,12 +151,14 @@ a {
 	box-shadow: var(--shadow);
 }
 
+/* ===== Header ส่วนต่าง ๆ (Hero, Project, CV) ===== */
 .hero,
 .project-header,
 .cv-header {
 	padding: 1.5rem;
 }
 
+/* ชื่อหลักของหน้าต่าง ๆ ใช้ clamp สำหรับ responsive font size */
 .hero h1,
 .project-header h1,
 .cv-header h1 {
@@ -136,6 +167,7 @@ a {
 	line-height: 1.2;
 }
 
+/* ข้อความบรรณลักษณ์: ตัวหนังสือเล็ก พิมพ์ใหญ่ */
 .kicker {
 	margin: 0;
 	color: var(--accent);
@@ -145,6 +177,7 @@ a {
 	font-size: 0.82rem;
 }
 
+/* ข้อความอธิบายใน header */
 .hero p,
 .project-header p,
 .cv-header p {
@@ -152,6 +185,8 @@ a {
 	color: var(--muted);
 }
 
+/* ===== ปุ่มและการกระทำ (Actions) ===== */
+/* ปุ่มนำทาง: ใช้ flex wrap สำหรับจัดเรียงบนมือแบบเล็ก */
 .hero-actions {
 	margin-top: 1rem;
 	display: flex;
@@ -159,6 +194,7 @@ a {
 	gap: 0.6rem;
 }
 
+/* สไตล์ร่วมของปุ่มทั้งหมด */
 .button,
 .todo-form button,
 .todo-controls button,
@@ -171,6 +207,7 @@ a {
 	transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.2s ease;
 }
 
+/* ปุ่มหลัก (Primary) */
 .button,
 .todo-form button {
 	background: var(--accent);
@@ -184,6 +221,7 @@ a {
 	background: var(--accent-strong);
 }
 
+/* เอฟเฟกต์กด */
 .button:active,
 .todo-form button:active,
 .todo-controls button:active,
@@ -191,6 +229,7 @@ a {
 	transform: translateY(1px);
 }
 
+/* ปุ่มรอง (Secondary) */
 .button-secondary {
 	background: #d9edea;
 	color: #104846;
@@ -200,12 +239,15 @@ a {
 	background: #c9e5e1;
 }
 
+/* ===== Home Page: Grid อื่น ๆ ===== */
+/* โชว์ 3 การ์ดติดต่อกัน ใช้ CSs Grid */
 .home-grid {
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* การ์ดข้อมูล: มี gradient background */
 .home-card {
 	padding: 1.15rem;
 	border-radius: var(--radius);
@@ -214,22 +256,27 @@ a {
 	box-shadow: var(--shadow);
 }
 
+/* ชื่อการ์ด */
 .home-card h2 {
 	margin: 0;
 	font-size: 1.08rem;
 }
 
+/* ข้อความอธิบายในการ์ด */
 .home-card p {
 	margin: 0.45rem 0 0;
 	color: var(--muted);
 }
 
+/* ===== To-Do App ===== */
+/* แอปเป็นกริด แยกส่วนโฟร์ม ตัวกรอง รายการ */
 .todo-app {
 	padding: 1.2rem;
 	display: grid;
 	gap: 0.95rem;
 }
 
+/* โฟร์มเพิ่มงาน */
 .todo-form {
 	display: grid;
 	gap: 0.45rem;
@@ -239,11 +286,13 @@ a {
 	font-weight: 600;
 }
 
+/* Row ของ input + ปุ่มเพิ่ม */
 .todo-input-row {
 	display: flex;
 	gap: 0.55rem;
 }
 
+/* Input field สำหรับเพิ่มงาน */
 .todo-form input {
 	flex: 1;
 	min-width: 0;
@@ -254,6 +303,7 @@ a {
 	background: #fffcf6;
 }
 
+/* Focus state สำหรับ keyboard navigation */
 .todo-form input:focus,
 .todo-form button:focus-visible,
 .todo-controls button:focus-visible,
@@ -264,39 +314,46 @@ a {
 	outline-offset: 2px;
 }
 
+/* ===== ตัวกรองรายการ (Filter Controls) ===== */
 .todo-controls {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 }
 
+/* ปุ่มกรอง */
 .todo-controls button {
 	background: #e9ddd0;
 	color: #2e261c;
 }
 
+/* ปุ่มกรองที่ active */
 .todo-controls button.active {
 	background: #d2e9e6;
 	color: #0e4a45;
 	font-weight: 600;
 }
 
+/* ปุ่มลบที่เสร็จแล้ว: กำหนดให้อยู่ทางขวาสุด */
 .todo-controls #clear-completed {
 	margin-left: auto;
 	background: #f5d2cc;
 	color: #6a2016;
 }
 
+/* ปุ่มลบเมื่อไม่มีรายการเสร็จ */
 .todo-controls #clear-completed:disabled {
 	opacity: 0.45;
 	cursor: not-allowed;
 }
 
+/* สถานะจำนวนงาน (อัปเดตจาก JavaScript)  */
 #todo-status {
 	margin: 0;
 	color: var(--muted);
 }
 
+/* รายการ To-Do: ใช้ Grid สำหรับระยะห่าง */
 .todo-list {
 	list-style: none;
 	margin: 0;
@@ -305,6 +362,7 @@ a {
 	gap: 0.55rem;
 }
 
+/* รายการ To-Do แต่ละตัว: Flexbox สำหรับเรียงตัวนอน */
 .todo-item {
 	display: flex;
 	align-items: center;
@@ -316,6 +374,7 @@ a {
 	padding: 0.62rem 0.72rem;
 }
 
+/* Label ใน To-Do: Checkbox + ข้อความ */
 .todo-item label {
 	display: flex;
 	align-items: center;
@@ -323,46 +382,55 @@ a {
 	min-width: 0;
 }
 
+/* ข้อความงาน: แตกบรรทัดถ้าข้อความจชนญ */
 .todo-item span {
 	word-break: break-word;
 }
 
+/* งานที่เสร็จ: ขีดทับและเบา */
 .todo-item.is-done span {
 	text-decoration: line-through;
 	color: #7f7668;
 }
 
+/* ปุ่มลบ: สีแดง */
 .todo-item button {
 	background: #f4d2cb;
 	color: var(--danger);
 	flex-shrink: 0;
 }
 
+/* ===== หน้า CV: หมวดต่าง ๆ ===== */
 .cv-section {
 	padding: 1.2rem;
 }
 
+/* หัวข้อส่วน */
 .cv-section h2 {
 	margin: 0 0 0.65rem;
 	font-size: 1.2rem;
 }
 
+/* หัวข้อรอง (เช่น ชื่อสถาบัน) */
 .cv-section h3 {
 	margin: 0;
 	font-size: 1.03rem;
 }
 
+/* ข้อความในหมวด CV */
 .cv-section p,
 .cv-section li {
 	margin: 0.35rem 0;
 	color: var(--muted);
 }
 
+/* รายการในหมวด */
 .cv-section ul {
 	margin: 0;
 	padding-left: 1.25rem;
 }
 
+/* ===== ส่วนท้าย (Footer) ===== */
 .site-footer {
 	border-top: 1px solid var(--line);
 	margin-top: 1rem;
@@ -374,27 +442,34 @@ a {
 	color: var(--muted);
 }
 
+/* ===== Responsive: Tablet (860px และลดลง) ===== */
 @media (max-width: 860px) {
+	/* ทำให้ Header เป็นแนวตั้ง */
 	.header-inner {
 		flex-direction: column;
 		align-items: flex-start;
 	}
 
+	/* ลดจำนวนการ์ด Home เหลือ 2 คอลัมน์ */
 	.home-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 
+/* ===== Responsive: Mobile (620px และลดลง) ===== */
 @media (max-width: 620px) {
+	/* ลด padding ของ page-content */
 	.page-content {
 		padding-top: 1.2rem;
 	}
 
+	/* ทำให้เมนูตัวเล็กลง wrap ได้ */
 	.site-nav ul {
 		width: 100%;
 		flex-wrap: wrap;
 	}
 
+	/* ลด padding ของ section ทั้งหมด */
 	.hero,
 	.project-header,
 	.cv-header,
@@ -403,24 +478,29 @@ a {
 		padding: 1rem;
 	}
 
+	/* Home grid: แนวตั้ง 1 คอลัมน์ */
 	.home-grid {
 		grid-template-columns: 1fr;
 	}
 
+	/* Input + ปุ่ม stack เป็นแนวตั้ง */
 	.todo-input-row {
 		flex-direction: column;
 	}
 
+	/* ลบ margin-left ของปุ่มลบ */
 	.todo-controls #clear-completed {
 		margin-left: 0;
 	}
 
+	/* To-Do item: เรียงแนวตั้ง */
 	.todo-item {
 		align-items: flex-start;
 		flex-direction: column;
 	}
 }
 
+/* ===== Accessibility: ลดการเคลื่อนไหว (Reduced Motion) ===== */
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
