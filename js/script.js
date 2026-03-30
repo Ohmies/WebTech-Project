@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     todos.push({
-      id: crypto.randomUUID(),
+      id: createTodoId(),
       text,
       completed: false,
     });
@@ -195,5 +195,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
+  }
+
+  function createTodoId() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+
+    return `todo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
   }
 });

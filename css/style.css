@@ -33,6 +33,22 @@ body {
 		linear-gradient(165deg, #f9f5ee 0%, #efe5d7 100%);
 }
 
+.skip-link {
+	position: absolute;
+	left: 0.8rem;
+	top: -3rem;
+	background: #134a47;
+	color: #f4fffd;
+	padding: 0.5rem 0.72rem;
+	border-radius: 8px;
+	text-decoration: none;
+	z-index: 30;
+}
+
+.skip-link:focus {
+	top: 0.8rem;
+}
+
 a {
 	color: inherit;
 }
@@ -402,5 +418,15 @@ a {
 	.todo-item {
 		align-items: flex-start;
 		flex-direction: column;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
 	}
 }
