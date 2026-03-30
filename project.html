@@ -8,7 +8,10 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
+    <!-- Skip link สำหรับการเข้าถึง -->
     <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+    
+    <!-- ส่วนหัว: มีโลโก้และเมนูนำทาง -->
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html">My Portfolio</a>
@@ -22,13 +25,17 @@
         </div>
     </header>
 
+    <!-- เนื้อหาหลักของหน้า -->
     <main id="main-content" class="container page-content">
+        <!-- หัวข้อโปรเจกต์ -->
         <section class="project-header">
             <h1>Project: To-Do List</h1>
             <p>แอปจัดการงานประจำวันด้วย JavaScript: เพิ่มงาน ทำเครื่องหมายว่าสำเร็จ ลบงาน และกรองรายการได้</p>
         </section>
 
+        <!-- แอปจัดการ To-Do: ฟอร์มเพิ่มงาน ตัวกรอง และรายการงาน -->
         <section class="todo-app" aria-label="แอปจัดการงาน">
+            <!-- ฟอร์มสำหรับเพิ่มงานใหม่ -->
             <form id="todo-form" class="todo-form">
                 <label for="todo-input">เพิ่มงานใหม่</label>
                 <div class="todo-input-row">
@@ -37,6 +44,7 @@
                 </div>
             </form>
 
+            <!-- ตัวกรองรายการและปุ่มลบที่เสร็จแล้ว -->
             <div class="todo-controls" aria-label="ตัวกรองรายการ">
                 <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
                 <button type="button" class="filter-btn" data-filter="active">ยังไม่เสร็จ</button>
@@ -44,9 +52,13 @@
                 <button type="button" id="clear-completed">ลบที่เสร็จแล้ว</button>
             </div>
 
+            <!-- แสดงจำนวนงานและสถานะ (อัปเดตแบบอัตโนมัติจาก JavaScript) -->
             <p id="todo-status" aria-live="polite">ยังไม่มีงาน</p>
+            
+            <!-- รายการงาน: ถูกสร้างจาก JavaScript เมื่อมีการเพิ่ม -->
             <ul id="todo-list" class="todo-list" aria-label="รายการงาน"></ul>
 
+            <!-- ข้อความ fallback สำหรับเบราว์เซอร์ที่ไม่รองรับ JavaScript -->
             <noscript>
                 <p>โปรดเปิดใช้งาน JavaScript เพื่อใช้งานฟังก์ชัน To-Do List</p>
             </noscript>

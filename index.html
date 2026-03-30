@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Skip link ช่วยให้ผู้ใช้ keyboard/screen reader ข้ามไปยังเนื้อหาหลักได้เลย -->
     <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+    
+    <!-- ส่วนหัว: มีโลโก้และเมนูนำทางหลัก -->
     <header class="site-header">
         <div class="container header-inner">
+            <!-- โลโก้สำหรับกลับไปหน้าแรก -->
             <a class="brand" href="index.html">My Portfolio</a>
+            
+            <!-- เมนูนำทางความหลัก: Home, Project, CV -->
             <nav class="site-nav" aria-label="เมนูหลัก">
                 <ul>
                     <li><a class="active" href="index.html" aria-current="page">Home</a></li>
@@ -21,17 +27,21 @@
         </div>
     </header>
 
+    <!-- เนื้อหาหลักของหน้า -->
     <main id="main-content" class="container page-content">
+        <!-- ส่วน Hero: แนะนำตัวและเรียนเชิญเข้าชมเว็บ -->
         <section class="hero">
             <p class="kicker">Front-End Student Project</p>
             <h1>นายพีรพัฒน์ สิงห์ปั้น</h1>
             <p>ยินดีต้อนรับสู่เว็บไซต์ส่วนตัวสำหรับรายวิชา Web Technology</p>
+            <!-- ปุ่มเรียนเชิญให้ไปชมหน้าอื่น ๆ -->
             <div class="hero-actions">
                 <a class="button" href="project.html">ดูโปรเจกต์</a>
                 <a class="button button-secondary" href="cv.html">ดูข้อมูล CV</a>
             </div>
         </section>
 
+        <!-- กริดแสดงภาพรวมของแต่ละหมวดในเว็บไซต์ -->
         <section class="home-grid" aria-label="ภาพรวมเว็บไซต์">
             <article class="home-card">
                 <h2>หน้า Home</h2>
@@ -48,6 +58,7 @@
         </section>
     </main>
 
+    <!-- ส่วนท้ายของเว็บไซต์ -->
     <footer class="site-footer">
         <div class="container">
             <p>Personal Website Project</p>
