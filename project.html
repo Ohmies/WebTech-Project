@@ -22,9 +22,33 @@
     </header>
 
     <main class="container page-content">
-        <section>
+        <section class="project-header">
             <h1>Project: To-Do List</h1>
-            <p>หน้านี้จะใช้แสดงโปรเจกต์ที่มีการใช้งาน JavaScript ตามข้อกำหนดของรายวิชา</p>
+            <p>แอปจัดการงานประจำวันด้วย JavaScript: เพิ่มงาน ทำเครื่องหมายว่าสำเร็จ ลบงาน และกรองรายการได้</p>
+        </section>
+
+        <section class="todo-app" aria-label="แอปจัดการงาน">
+            <form id="todo-form" class="todo-form">
+                <label for="todo-input">เพิ่มงานใหม่</label>
+                <div class="todo-input-row">
+                    <input id="todo-input" name="todo" type="text" placeholder="เช่น อ่านบทที่ 3" required maxlength="120">
+                    <button type="submit">เพิ่ม</button>
+                </div>
+            </form>
+
+            <div class="todo-controls" aria-label="ตัวกรองรายการ">
+                <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
+                <button type="button" class="filter-btn" data-filter="active">ยังไม่เสร็จ</button>
+                <button type="button" class="filter-btn" data-filter="completed">เสร็จแล้ว</button>
+                <button type="button" id="clear-completed">ลบที่เสร็จแล้ว</button>
+            </div>
+
+            <p id="todo-status" aria-live="polite">ยังไม่มีงาน</p>
+            <ul id="todo-list" class="todo-list" aria-label="รายการงาน"></ul>
+
+            <noscript>
+                <p>โปรดเปิดใช้งาน JavaScript เพื่อใช้งานฟังก์ชัน To-Do List</p>
+            </noscript>
         </section>
     </main>
 
